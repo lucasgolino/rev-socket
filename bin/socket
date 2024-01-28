@@ -1,0 +1,13 @@
+#!/bin/bash
+
+mkdir -p /dev/net
+if [ ! -c /dev/net/tun ]; then
+    mknod /dev/net/tun c 10 200
+fi
+
+if [ $OVPN_ENABLE = true ]; then
+    openvpn --config /opt/socket/$OVPN_CONFIG_NAME.conf &> /opt/socket-bin/openvpn.log &
+    sleep 10
+fi
+    
+ssh -v -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null -i /opt/socket/$SSH_KEYNAME.pem -NL 0.0.0.0:$SOCK_PORT:$RDOCKER_SOCK $SSH_USER@$SSH_HOST
