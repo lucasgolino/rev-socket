@@ -1,6 +1,7 @@
 # Rev-socket
 
 [![License: GNU GPL](https://img.shields.io/badge/License-GNU%20GPL-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[![Build and Release](https://github.com/lucasgolino/rev-socket/actions/workflows/build_at_release.yaml/badge.svg)](https://github.com/lucasgolino/rev-socket/actions/workflows/build_at_release.yaml)
 
 ## Overview
 

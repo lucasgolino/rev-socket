@@ -6,6 +6,8 @@ on:
       - created
 
 env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  WORKFLOW_TOKEN: ${{ secrets.WK_TOKEN }}
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
 
@@ -22,7 +24,7 @@ jobs:
         with:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
-          password: ${{ secrets.WK_TOKEN }}
+          password: ${{ env.WORKFLOW_TOKEN }}
       
       - name: Extract metadata (tags, labels) for Docker
         id: meta
