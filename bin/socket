@@ -10,4 +10,6 @@ if [ $OVPN_ENABLE = true ]; then
     sleep 10
 fi
     
-ssh -v -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null -i /opt/socket/$SSH_KEYNAME.pem -NL 0.0.0.0:$SOCK_PORT:$RDOCKER_SOCK $SSH_USER@$SSH_HOST
+ssh -v -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null -i /opt/socket/$SSH_KEYNAME.pem -NL 0.0.0.0:$SOCK_PORT:$RDOCKER_SOCK $SSH_USER@$SSH_HOST &> /opt/socket-bin/ssh.log &
+
+tail -f /opt/socket-bin/openvpn.log /opt/socket-bin/ssh.log
